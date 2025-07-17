@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -31,10 +30,6 @@ type LoginResponse struct {
 var db *sql.DB
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Erreur lors du chargement du fichier .env")
-	}
 
 	connStr := fmt.Sprintf(
 		"user=%s password=%s dbname=%s host=%s port=%s sslmode=disable",
@@ -45,7 +40,7 @@ func main() {
 		os.Getenv("DB_PORT"),
 	)
 
-	db, err = sql.Open("postgres", connStr)
+	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal("Erreur connexion DB:", err)
 	}
