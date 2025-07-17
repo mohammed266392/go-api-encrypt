@@ -1,0 +1,6 @@
+{
+  "gopls": {
+    "semanticTokens": true
+  },
+  "go.useLanguageServer": true
+}
