@@ -40,7 +40,8 @@ func main() {
 		os.Getenv("DB_PORT"),
 	)
 
-	db, err := sql.Open("postgres", connStr)
+	var err error
+	db, err = sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal("Erreur connexion DB:", err)
 	}
